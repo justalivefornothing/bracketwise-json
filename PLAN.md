@@ -57,11 +57,10 @@ offset -> node.
 
 ## Milestones
 
-- [ ] chore: plan, license, gitignore
-- [ ] chore: scaffold vite-react + tailwind + vitest
-- [ ] feat: parser core + tests
-- [ ] feat: pointer index, interval lookup, printer
-- [ ] feat: editor with hover mapping + tree view
-- [ ] feat: tolerant mode, diagnostics, output panel, samples
-- [ ] fix: polish after smoke run
-- [ ] docs: readme
+- [x] chore: plan, license, gitignore
+- [x] chore: scaffold vite-react + tailwind + vitest
+- [x] feat: parser core + tests (strict and tolerant)
+- [x] feat: pointer index, interval lookup, printer
+- [x] feat: editor with hover mapping, tree view, diagnostics, output tab, samples
+- [x] fix: polish after smoke run (ligatures, reveal scrolling, sample fixtures)
+- [x] docs: readme
