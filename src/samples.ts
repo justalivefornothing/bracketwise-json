@@ -90,13 +90,13 @@ export const SAMPLES: Sample[] = [
   },
   {
     id: 'strings',
-    label: 'Broken: unterminated string & numbers',
+    label: 'Broken: numbers, literal & open string',
     broken: true,
     text: `{
-  "title": "Unfinished thought,
   "price": 019.99,
   "ratio": .5,
-  "ok": True
+  "ok": True,
+  "title": "Unfinished thought
 }
 `,
   },

@@ -588,7 +588,7 @@ class Parser {
     if (this.code === 0x30) {
       this.advance()
       if (isDigit(this.code)) {
-        this.report(['"."', '"e"', 'end of number'], { hint: 'leading zeros are not allowed in JSON' })
+        this.report(['"."', '"e"', 'end of number'], { found: `digit "${this.peek()}"`, hint: 'leading zeros are not allowed in JSON' })
         while (isDigit(this.code)) this.advance()
       }
     } else if (isDigit(this.code)) {

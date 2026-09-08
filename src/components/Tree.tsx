@@ -60,10 +60,19 @@ export function Tree(props: TreeProps) {
   const [focused, setFocused] = useState<string>(selected ?? '')
   const focusPointer = index.byPointer.has(focused) ? focused : (selected ?? '')
 
-  // Scroll the selected row into view once any expand animation has settled.
+  // Scroll the selected row into view (within the tree's own scroll container, so the
+  // page itself never jumps) once any expand animation has settled.
   useEffect(() => {
     if (selected === null) return
-    const t = setTimeout(() => rowRefs.current.get(selected)?.scrollIntoView({ block: 'nearest' }), 140)
+    const t = setTimeout(() => {
+      const row = rowRefs.current.get(selected)
+      const pane = row?.closest<HTMLElement>('[role="tabpanel"]')
+      if (!row || !pane) return
+      const r = row.getBoundingClientRect()
+      const p = pane.getBoundingClientRect()
+      if (r.top < p.top) pane.scrollTop -= p.top - r.top + 8
+      else if (r.bottom > p.bottom) pane.scrollTop += r.bottom - p.bottom + 8
+    }, 140)
     return () => clearTimeout(t)
   }, [selected, revealNonce])
 

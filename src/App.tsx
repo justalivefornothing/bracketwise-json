@@ -100,7 +100,6 @@ export default function App() {
       expandTo(info)
       setSelected(info.pointer)
       setTreeReveal((n) => n + 1)
-      setTab('tree')
     },
     [index, expandTo],
   )

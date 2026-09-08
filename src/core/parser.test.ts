@@ -94,7 +94,7 @@ describe('parse — errors', () => {
     ['{"a" 1}', /Unexpected "1" at 1:6: expected ":" after object key/],
     ['{a: 1}', /Unexpected "a" at 1:2: expected string key — object keys must be quoted strings/],
     ["{'a': 1}", /Unexpected "'" at 1:2/],
-    ['[01]', /Unexpected "1" at 1:3: .*leading zeros/],
+    ['[01]', /Unexpected digit "1" at 1:3: .*leading zeros/],
     ['[1.]', /Unexpected "\]" at 1:4: expected digit after the decimal point/],
     ['[1e]', /Unexpected "\]" at 1:4: expected digit in the exponent/],
     ['[-]', /Unexpected "\]" at 1:3: expected digit after "-"/],

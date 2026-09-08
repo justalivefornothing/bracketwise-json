@@ -138,9 +138,12 @@ export function Editor({ value, onChange, lineStarts, marks, onHoverOffset, onCa
     if (gutterRef.current) gutterRef.current.style.transform = `translateY(${-ta.scrollTop}px)`
   }
 
+  // Only react to a new reveal request, not to later edits that change lineStarts.
+  const handledReveal = useRef(-1)
   useEffect(() => {
     const ta = taRef.current
-    if (!reveal || !ta || !metrics) return
+    if (!reveal || !ta || !metrics || handledReveal.current === reveal.nonce) return
+    handledReveal.current = reveal.nonce
     const line = lineAt(lineStarts, reveal.offset) - 1
     const y = line * metrics.lineHeight
     const top = ta.scrollTop

@@ -50,6 +50,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* JetBrains Mono ships ligatures (>= becomes a single glyph); source must read literally. */
+.font-mono,
+code,
+pre {
+  font-variant-ligatures: none;
+}
+
 /* Shared metrics for the textarea and its highlight mirror. They must agree exactly. */
 .editor-text {
   font-family: var(--font-mono);
